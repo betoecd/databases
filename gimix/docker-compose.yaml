@@ -1,0 +1,21 @@
+version: '3.5'
+
+services:
+  postgis:
+    container_name: postgis-gimix
+    build:
+      context: .
+    volumes:
+       - gimix:/var/lib/postgresql
+    ports:
+      - "5433:5432"
+    networks:
+      - postgis
+    restart: unless-stopped
+
+networks:
+  postgis:
+    driver: bridge
+
+volumes:
+  gimix:
